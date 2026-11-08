@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Deploying website to S3..."
+
+  post_build:
+    commands:
+      - aws s3 sync website/ s3://asrinbucket-new1 --delete
+
+artifacts:
+  files:
+    - '**/*'
